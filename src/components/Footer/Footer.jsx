@@ -10,9 +10,7 @@ export default function Footer() {
           <div className="ft__cta-content">
             <h2 className="ft__cta-title">
               Get started now!
-              <span className="ft__cta-subtitle">
-                It takes less than a minute of your time.
-              </span>
+           
             </h2>
             
             <div className="ft__cta-actions">
@@ -34,13 +32,7 @@ export default function Footer() {
                 </svg>
               </a>
               
-              <a 
-                className="ft__cta-btn ft__cta-btn--secondary" 
-                href="/demo" 
-                aria-label="Book a demo"
-              >
-                <span>Book a demo</span>
-              </a>
+       
             </div>
           </div>
         </div>
