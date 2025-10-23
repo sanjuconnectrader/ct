@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+
+
+/* Only set min-height so normal page scrolling remains on window */
+#root { min-height: 100%; }
+
+/* Media defaults */
+img, svg, video, canvas { display: block; max-width: 100%; }
+
+/* Route-change friendly scrolling */
+html { scroll-behavior: auto; }
+
+/* If you have a fixed header (e.g., 64px tall), offset anchor jumps */
+:root { --nav-height: 64px; }
+html { scroll-padding-top: var(--nav-height); }
+
+/* Optional: avoid scroll chaining into modals/drawers */
+body { overscroll-behavior-y: none; }
+mg, svg, video, canvas { display: block; max-width: 100%; }
