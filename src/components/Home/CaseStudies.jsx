@@ -20,10 +20,7 @@ export default function CaseStudies({
       <div className="cs-wrap">
         <div className="cs-header">
           <h2 id="case-studies-title" className="cs-title">Case Studies</h2>
-          <div className="cs-arrows">
-            <button type="button" className="cs-arrow" onClick={() => page(-1)} aria-label="Previous">←</button>
-            <button type="button" className="cs-arrow" onClick={() => page(1)} aria-label="Next">→</button>
-          </div>
+     
         </div>
 
         <div className="cs-grid" ref={scrollerRef} role="list" aria-label="Case studies list">

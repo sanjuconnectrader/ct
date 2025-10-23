@@ -1,0 +1,266 @@
+/* Canvas */
+.ins {
+  background: #f4f4f4;
+  color: #0b0b0b;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.ins__wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 80px 28px 100px;
+}
+
+/* Title */
+.ins__title {
+  margin: 0 0 48px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-size: clamp(42px, 6vw, 68px);
+  text-align: left;
+}
+
+/* Grid of cards */
+.ins__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 64px;
+  margin-top: 32px;
+}
+
+/* Card */
+.ins__card {
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.ins__card:hover {
+  transform: translateY(-2px);
+}
+
+/* Image with fixed ratio */
+.ins__imageLink {
+  display: block;
+  text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e9e9e9;
+}
+
+.ins__imageRatio {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.7 / 1;
+  overflow: hidden;
+}
+
+.ins__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.ins__imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+}
+
+.ins__imageLink:hover .ins__image {
+  transform: scale(1.03);
+}
+
+.ins__imageLink:hover .ins__imageOverlay {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Meta row */
+.ins__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.ins__kicker {
+  font-size: 14px;
+  color: #5a5a5a;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.ins__dot {
+  padding: 0 6px;
+  color: #8a8a8a;
+}
+
+.ins__date {
+  font-size: 14px;
+  color: #7a7a7a;
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+/* Headline */
+.ins__headline {
+  margin: 12px 0 0;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.ins__headlineLink {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.ins__headlineLink:hover {
+  color: #2a2a2a;
+  text-decoration: none;
+}
+
+/* CTA */
+.ins__ctaRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+.ins__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 28px;
+  border: 1.5px solid #1a1a1a;
+
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  transition: all 0.25s ease;
+  background: transparent;
+}
+
+.ins__cta:hover {
+  background: #111;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.ins__ctaArrow {
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.ins__cta:hover .ins__ctaArrow {
+  transform: translateX(3px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .ins__grid {
+    gap: 48px;
+  }
+  
+  .ins__wrap {
+    padding: 72px 24px 90px;
+  }
+}
+
+@media (max-width: 980px) {
+  .ins__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .ins__title {
+    margin-bottom: 40px;
+  }
+  
+  .ins__wrap {
+    padding: 64px 20px 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ins__grid {
+    gap: 32px;
+  }
+  
+  .ins__meta {
+    margin-top: 16px;
+  }
+  
+  .ins__headline {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ins__wrap {
+    padding: 48px 18px 64px;
+  }
+  
+  .ins__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 24px;
+  }
+  
+  .ins__title {
+    margin-bottom: 32px;
+    font-size: clamp(36px, 8vw, 48px);
+  }
+  
+  .ins__meta {
+    margin-top: 14px;
+  }
+  
+  .ins__headline {
+    margin-top: 8px;
+  }
+  
+  .ins__ctaRow {
+    margin-top: 48px;
+  }
+  
+  .ins__cta {
+    padding: 16px 24px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ins__wrap {
+    padding: 40px 16px 56px;
+  }
+  
+  .ins__grid {
+    gap: 28px;
+  }
+  
+  .ins__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .ins__date {
+    font-size: 13px;
+  }
+  
+  .ins__kicker {
+    font-size: 13px;
+  }
+}
