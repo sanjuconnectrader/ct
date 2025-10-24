@@ -1,0 +1,360 @@
+/* Montserrat Light for the headline feel */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap");
+
+* { 
+  box-sizing: border-box; 
+}
+
+.v-section{
+  background: #000000;
+  color: #ffffff;
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 300;
+  width: 100%;
+  overflow: hidden;
+}
+
+.v-wrap{
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 120px 40px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* LEFT */
+.v-left{
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+.v-title{
+  margin: 0 0 32px 0;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  font-size: 96px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.v-title.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.v-title .v-br{ 
+  display: block; 
+}
+
+.v-lead{
+  margin: 0 0 80px 0;
+  max-width: 500px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+  line-height: 1.65;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+}
+
+.v-lead.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* tiny white "mark" */
+.v-mark{
+  margin-top: auto;
+  width: 140px;
+  height: 140px;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
+}
+
+.v-mark.animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* RIGHT */
+.v-right{
+  position: relative;
+  display: grid;
+  row-gap: 100px;
+}
+
+/* Each card has a subtle left divider matching the stack line */
+.v-card{
+  position: relative;
+  padding-left: 48px;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.v-card.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.v-card:nth-child(1) { transition-delay: 0.1s; }
+.v-card:nth-child(2) { transition-delay: 0.2s; }
+.v-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* vertical rule */
+.v-card::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.18);
+  transition: background-color 0.3s ease;
+}
+
+.v-card:hover::before {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* index number */
+.v-num{
+  position: absolute;
+  left: 0;
+  transform: translateX(-42px);
+  top: -4px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.v-card:hover .v-num {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* big heading like "Envision/Craft/Amplify" */
+.v-heading{
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  font-size: 64px;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.v-card:hover .v-heading {
+  transform: translateX(8px);
+}
+
+/* paragraph */
+.v-body{
+  margin: 0;
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 17px;
+  line-height: 1.7;
+  transition: transform 0.3s ease;
+}
+
+.v-card:hover .v-body {
+  transform: translateX(4px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .v-wrap {
+    padding: 100px 40px;
+    gap: 60px;
+  }
+  
+  .v-title {
+    font-size: 84px;
+  }
+  
+  .v-heading {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .v-wrap {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 80px 32px;
+  }
+  
+  .v-left { 
+    min-height: auto; 
+    padding-top: 20px;
+  }
+  
+  .v-mark { 
+    margin-top: 60px; 
+  }
+  
+  .v-right { 
+    row-gap: 80px; 
+  }
+  
+  .v-card { 
+    padding-left: 40px; 
+  }
+  
+  .v-num { 
+    transform: translateX(-36px); 
+  }
+  
+  .v-title {
+    font-size: 72px;
+    text-align: center;
+  }
+  
+  .v-lead {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .v-mark {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .v-wrap { 
+    padding: 64px 24px; 
+    gap: 48px;
+  }
+  
+  .v-right { 
+    row-gap: 64px; 
+  }
+  
+  .v-card { 
+    padding-left: 32px; 
+  }
+  
+  .v-num { 
+    transform: translateX(-28px); 
+    font-size: 13px; 
+  }
+  
+  .v-title {
+    font-size: 56px;
+  }
+  
+  .v-heading {
+    font-size: 48px;
+  }
+  
+  .v-lead {
+    font-size: 17px;
+    margin-bottom: 60px;
+  }
+  
+  .v-body {
+    font-size: 16px;
+  }
+  
+  .v-mark {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  .v-wrap { 
+    padding: 48px 20px; 
+  }
+  
+  .v-title {
+    font-size: 48px;
+  }
+  
+  .v-heading {
+    font-size: 40px;
+  }
+  
+  .v-card {
+    padding-left: 28px;
+  }
+  
+  .v-num {
+    transform: translateX(-24px);
+  }
+  
+  .v-lead {
+    font-size: 16px;
+    margin-bottom: 48px;
+  }
+  
+  .v-body {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  
+  .v-mark {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .v-wrap { 
+    padding: 40px 16px; 
+  }
+  
+  .v-title {
+    font-size: 42px;
+  }
+  
+  .v-heading {
+    font-size: 36px;
+  }
+  
+  .v-card {
+    padding-left: 24px;
+  }
+  
+  .v-num {
+    transform: translateX(-20px);
+    font-size: 12px;
+  }
+  
+  .v-right {
+    row-gap: 56px;
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .v-title,
+  .v-lead,
+  .v-mark,
+  .v-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  .v-card:hover .v-heading,
+  .v-card:hover .v-body,
+  .v-card:hover .v-num,
+  .v-card:hover::before {
+    transform: none;
+  }
+}

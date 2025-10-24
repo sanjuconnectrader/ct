@@ -7,7 +7,7 @@ import "./ValueProposition.css";
  * - Right: large headline + 2-column list of value-prop problems (with dividers)
  */
 export default function ValueProposition({
-  image = "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  image = "./value.webp",
 }) {
   return (
     <section className="vp" aria-labelledby="vp-title">

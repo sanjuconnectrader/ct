@@ -2,12 +2,12 @@ import InsightsSection from '../components/Blogs/InsightsSection'
 import Footer from '../components/Footer/Footer'
 import CaseStudies from '../components/Home/CaseStudies'
 import Hero from '../components/Home/Hero'
-import HeroHeadline from '../components/Home/HeroHeadline'
-import HeroScroll from '../components/Home/HeroScroll'
+
 
 import Introscroller from '../components/Home/Introscroller'
 import OmniSection from '../components/Home/OmniSection'
 import StoryBanner from '../components/Home/StoryBanner'
+import ValuesAlt from '../components/Home/ValuesAlt'
 import WhatYouWillAchieve from '../components/Home/WhatYouWillAchieve'
 
 
@@ -21,14 +21,10 @@ const Homepage = () => {
         <div className="home-first-section">
           <Hero/>
         </div>
-        <div className="home-first-section">
-          <Introscroller/>
-        </div>
+    
+        <ValuesAlt/>
 
-         <div className="home-first-section">
-          <HeroScroll/>
-        </div>
-
+   
         <CaseStudies/>
         <OmniSection/>
         <StoryBanner/>
