@@ -1,0 +1,67 @@
+/* Import Montserrat */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap");
+
+/* Root banner */
+.contactheader {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  display: grid;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  isolation: isolate;
+}
+
+/* Subtle dark overlay for legibility */
+.contactheader__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,.45));
+  z-index: 0;
+}
+
+/* Content container: centered horizontally & vertically */
+.contactheader__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  justify-content: center;  /* center horizontally */
+  align-items: center;      /* center vertically */
+  text-align: center;
+}
+
+/* Title */
+.contactheader__title {
+  margin: 0;
+  color: #fff;
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-weight: 300;            /* Montserrat Light */
+  line-height: 0.95;
+  margin-top: 35px;
+  letter-spacing: 0.2px;
+  font-size: clamp(40px, 6vw, 88px);
+  text-shadow: 0 2px 14px rgba(0,0,0,.35);
+}
+
+/* Desktop tweaks */
+@media (min-width: 992px) {
+  .contactheader__inner {
+    padding: 56px 56px;        /* symmetric padding while centered */
+  }
+  .contactheader {
+    min-height: 300px;
+  }
+}
+
+/* Very wide desktops */
+@media (min-width: 1440px) {
+  .contactheader__inner {
+    max-width: 1380px;
+  }
+}
