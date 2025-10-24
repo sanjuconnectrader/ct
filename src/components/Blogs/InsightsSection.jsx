@@ -35,7 +35,7 @@ export default function InsightsSection() {
   return (
     <section className="ins" aria-labelledby="ins-title">
       <div className="ins__wrap">
-        <h2 id="ins-title" className="ins__title">Our Blogs</h2>
+        <h2 id="ins-title" className="ins__title">Latest Blogs</h2>
 
         <div className="ins__grid">
           {POSTS.map((p) => (
@@ -63,7 +63,7 @@ export default function InsightsSection() {
 
         <div className="ins__ctaRow">
           <a href="#/insights" className="ins__cta" aria-label="Explore all insights">
-            <span>Explore all insights</span>
+            <span>Explore all Blogs</span>
             <svg className="ins__ctaArrow" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M5 10h10m0 0-3-3m3 3-3 3" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>

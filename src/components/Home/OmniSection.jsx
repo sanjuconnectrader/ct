@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./OmniSection.css";
 
 /** 24px monochrome SVG icons (accessible, decorative) */
@@ -34,47 +34,66 @@ const DEFAULT_TITLE = "Mobile Apps, CMS & Web Apps — Unified Framework";
 const DEFAULT_FEATURES = [
   {
     icon: <IconPhone />,
-    heading: "Mobile App Development",
+    heading: "Mobile-First Applications",
     copy:
-      "Fast, responsive iOS/Android apps with clean UX and offline-first patterns. We ship with CI/CD, analytics, and crash reporting baked in.",
+      "Cross-platform mobile development with React Native and Flutter. We build performant apps with intuitive UX, offline capabilities, and seamless API integration.",
   },
   {
     icon: <IconServer />,
-    heading: "Backend APIs & Databases",
+    heading: "Scalable Backend Systems",
     copy:
-      "Secure Node/Express services, REST/GraphQL APIs, and scalable data models. Auth, RBAC, queues, and caching for real-world performance.",
+      "Robust server architecture with Node.js, Python, and cloud services. We design secure APIs, database schemas, and microservices for optimal performance.",
   },
   {
     icon: <IconBrowser />,
-    heading: "Web App Development",
+    heading: "Modern Web Platforms",
     copy:
-      "High-performance web apps with modern React patterns, accessibility, SEO, and pixel-perfect UI—optimized for Core Web Vitals.",
+      "Progressive web applications with React, Vue, and modern frameworks. We focus on performance, accessibility, and user experience across all devices.",
   },
 ];
 
-/**
- * Props:
- * - title: string
- * - features: [{icon: ReactNode, heading: string, copy: string}]
- * - imageSrc: string
- * - imageAlt: string
- */
 export default function OmniSection({
   title = DEFAULT_TITLE,
   features = DEFAULT_FEATURES,
   imageSrc = "./data-removebg-preview.png",
-  imageAlt = "Connected platform illustration covering mobile, backend, CMS, and web",
+  imageAlt = "Full-stack development architecture illustration",
 }) {
+  const titleRef = useRef(null);
+  const rowsRef = useRef([]);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: "-50px 0px" }
+    );
+
+    if (titleRef.current) observer.observe(titleRef.current);
+    if (imageRef.current) observer.observe(imageRef.current);
+    
+    rowsRef.current.forEach((row) => {
+      if (row) observer.observe(row);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="omni" aria-labelledby="omni-title">
       <div className="omni__container">
         {/* LEFT */}
         <div className="omni__left">
-          <h2 id="omni-title" className="omni__title">{title}</h2>
+          <h2 id="omni-title" className="omni__title" ref={titleRef}>{title}</h2>
 
           <ul className="omni__list" role="list">
             {features.map((f, i) => (
-              <li className="omni__row" key={i}>
+              <li className="omni__row" key={i} ref={el => rowsRef.current[i] = el}>
                 <span className="omni__ico" aria-hidden="true">{f.icon}</span>
                 <div className="omni__rowText">
                   <h3 className="omni__rowTitle">{f.heading}</h3>
@@ -87,7 +106,7 @@ export default function OmniSection({
 
         {/* RIGHT */}
         <div className="omni__right">
-          <img className="omni__art" src={imageSrc} alt={imageAlt} loading="lazy" />
+          <img className="omni__art" src={imageSrc} alt={imageAlt} loading="lazy" ref={imageRef} />
         </div>
       </div>
     </section>
