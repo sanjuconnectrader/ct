@@ -1,0 +1,81 @@
+/* Montserrat Light for the sleek, thin look */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap");
+
+.aboutheader {
+  position: relative;
+  width: 100%;
+  min-height: 320px;                 /* tall, cinematic band like the sample */
+  display: grid;
+  place-items: center;               /* center text both ways */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  isolation: isolate;
+}
+
+/* Vignette + darkening for legibility, slightly stronger at edges */
+.aboutheader__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 70% at 50% 50%, rgba(0,0,0,0.15), rgba(0,0,0,0.55)),
+    linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0.45));
+  z-index: 0;
+}
+
+/* Content wrapper */
+.aboutheader__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1400px;
+  padding: 36px 24px;
+  text-align: center;
+}
+
+/* Title line (brand | tagline) */
+.aboutheader__title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-weight: 300;                  /* Light */
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+  font-size: clamp(22px, 3.6vw, 44px);
+  text-shadow: 0 2px 14px rgba(0,0,0,0.35);
+  white-space: normal;
+}
+
+/* Brand slightly heavier for hierarchy */
+.aboutheader__brand {
+  font-weight: 400;
+}
+
+/* Pipe divider spacing */
+.aboutheader__divider {
+  padding: 0 0.35em;
+  opacity: 0.9;
+}
+
+/* Tagline stays light and readable */
+.aboutheader__tag {
+  font-weight: 300;
+  opacity: 0.98;
+}
+
+/* Wider screens: a touch more vertical presence */
+@media (min-width: 992px) {
+  .aboutheader {
+    min-height: 340px;
+  }
+  .aboutheader__inner {
+    padding: 56px 48px;
+  }
+}
+
+/* Ultra-wide: keep it elegant */
+@media (min-width: 1440px) {
+  .aboutheader__inner {
+    max-width: 1500px;
+  }
+}

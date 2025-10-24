@@ -10,7 +10,6 @@ export default function Footer() {
           <div className="ft__cta-content">
             <h2 className="ft__cta-title">
               Get started now!
-           
             </h2>
             
             <div className="ft__cta-actions">
@@ -31,8 +30,6 @@ export default function Footer() {
                   />
                 </svg>
               </a>
-              
-       
             </div>
           </div>
         </div>
@@ -112,7 +109,6 @@ export default function Footer() {
                 </div>
                 
                 <div className="ft__contact-group">
-                 
                   <div className="ft__contact-item">
                     <span className="ft__contact-label">WhatsApp (Sales)</span>
                     <a 

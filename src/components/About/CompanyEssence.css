@@ -1,0 +1,99 @@
+/* Font: Montserrat (Light 300 for headings/body to match the feel) */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap");
+
+:root{
+  /* palette tuned to the reference */
+  --mv-bg: #f1f7ff;            /* soft ice/blue section background */
+  --mv-panel: #ffffff;         /* image card bg (for nice edge glow) */
+  --mv-text: #0f172a;          /* slate-900 */
+  --mv-muted: #475569;         /* slate-600 */
+  --mv-radius: 22px;
+  --mv-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+  --mv-wrap: 1400px;
+  --mv-gap: 56px;
+  --mv-pad: 72px;
+}
+
+* { box-sizing: border-box; }
+
+.mv{
+  background: white;
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--mv-text);
+}
+
+.mv__wrap{
+  max-width: var(--mv-wrap);
+  margin: 0 auto;
+  padding: calc(var(--mv-pad) + 8px) 24px;
+}
+
+.mv__row{
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: var(--mv-gap);
+  padding: 24px 0;
+}
+
+.mv__row + .mv__row{
+  margin-top: calc(var(--mv-pad) - 10px);
+  padding-top: calc(var(--mv-pad) - 10px);
+  border-top: 1px solid rgba(15,23,42,.06);
+}
+
+/* invert columns for row 2 on desktop */
+.mv__row--inverse{
+  grid-template-columns: 1fr 1.05fr;
+}
+
+.mv__media{
+  margin: 0;
+  background: var(--mv-panel);
+  border-radius: var(--mv-radius);
+  box-shadow: var(--mv-shadow);
+  overflow: hidden;
+}
+
+/* Maintain the same feel/ratio as the screenshot */
+.mv__media img{
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+}
+
+.mv__text{
+  line-height: 1.6;
+}
+
+.mv__title{
+  margin: 0 0 14px;
+  font-weight: 600;             /* subtle weight pop */
+  font-size: clamp(26px, 2.4vw, 34px);
+  letter-spacing: .2px;
+}
+
+.mv__para{
+  margin: 0;
+  color: var(--mv-muted);
+  font-weight: 300;             /* light, like the reference */
+  font-size: clamp(16px, 1.2vw, 18px);
+  max-width: 56ch;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  :root{ --mv-gap: 28px; --mv-pad: 40px; }
+  .mv__row,
+  .mv__row--inverse{
+    grid-template-columns: 1fr;
+  }
+  .mv__media img{ height: 280px; }
+  .mv__row--inverse .mv__media{ order: 2; } /* keep text first on mobile for both rows */
+}
+
+@media (max-width: 520px){
+  .mv__wrap{ padding: 36px 18px; }
+  .mv__media img{ height: 220px; }
+}

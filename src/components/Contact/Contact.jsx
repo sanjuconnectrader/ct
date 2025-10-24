@@ -9,6 +9,18 @@ const COUNTRY_CODES = [
   { code: "+61", label: "Australia", flag: "🇦🇺" },
 ];
 
+const MailIcon = (props) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" {...props}>
+    <path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 12 4 6.01V6h16ZM4 8.234V20h16V8.234l-7.4 5.55a2 2 0 0 1-2.2 0L4 8.234Z"/>
+  </svg>
+);
+
+const PhoneIcon = (props) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" {...props}>
+    <path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.11.37 2.31.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C11.85 21 3 12.15 3 2a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1c0 1.27.2 2.47.57 3.58a1 1 0 0 1-.25 1.01l-2.19 2.2Z"/>
+  </svg>
+);
+
 export default function Contact() {
   const [activeTab, setActiveTab] = useState("quote"); // 'quote' | 'partner'
   const [message, setMessage] = useState("");
@@ -32,26 +44,60 @@ export default function Contact() {
             <>
               {/* Split title: Together sits to the right of Better */}
               <h1 id="ct-title" className="ct-title ct-title--split" aria-label="Everything's Better Together">
-                <span className="ct-titleLeft">  Explore it together </span>
+                <span className="ct-titleLeft">Explore it together</span>
                 <span className="ct-titleRight">over a cup of tea</span>
               </h1>
               <p className="ct-lead">
-                 <p className="ct-lead">
-                Please feel free to share your thoughts and we can discuss it
-                over a cup of tea.
+                Share a brief note about your referral or partnership idea—we'll review and get back quickly with next steps.
               </p>
-              </p>
+
+              {/* Contact info block */}
+              <div className="ct-contacts" aria-label="Contact details">
+                <div className="ct-contactItem">
+                  <div className="ct-icon" aria-hidden="true"><MailIcon /></div>
+                  <div className="ct-contactText">
+                    <span className="ct-contactLabel">Email Us</span>
+                    <a className="ct-contactValue" href="mailto:connect@connectrader.com">connect@connectrader.com</a>
+                  </div>
+                </div>
+
+                <div className="ct-contactItem">
+                  <div className="ct-icon" aria-hidden="true"><PhoneIcon /></div>
+                  <div className="ct-contactText">
+                    <span className="ct-contactLabel">Call Us</span>
+                    <a className="ct-contactValue" href="tel:+12534005949">+1 (253) 400-5949</a>
+                  </div>
+                </div>
+              </div>
             </>
           ) : (
             <>
               <h1 id="ct-title" className="ct-title">
-              Elevate Digital
+                Elevate Digital
                 <br /> Innovation
               </h1>
               <p className="ct-lead">
-                Please feel free to share your thoughts and we can discuss it
-                over a cup of tea.
+                Share a few details about your needs—our team will respond with tailored guidance and a clear plan.
               </p>
+
+              {/* Contact info block */}
+              <div className="ct-contacts" aria-label="Contact details">
+                <div className="ct-contactItem">
+                  <div className="ct-icon" aria-hidden="true"><MailIcon /></div>
+                  <div className="ct-contactText">
+                    <span className="ct-contactLabel">Email Us</span>
+                    <a className="ct-contactValue" href="mailto:connect@connectrader.com">connect@connectrader.com</a>
+                  </div>
+                </div>
+
+                <div className="ct-contactItem">
+                  <div className="ct-icon" aria-hidden="true"><PhoneIcon /></div>
+                  <div className="ct-contactText">
+                    <span className="ct-contactLabel">Call Us</span>
+                    <a className="ct-contactValue" href="tel:+12534005949">+1 (253) 400-5949</a>
+                  </div>
+                </div>
+              </div>
             </>
           )}
         </div>
@@ -75,7 +121,7 @@ export default function Contact() {
             ))}
           </nav>
 
-          {/* GET A QUOTE */}
+          {/* GET INFO */}
           {activeTab === "quote" && (
             <form
               id="panel-quote"
@@ -154,7 +200,7 @@ export default function Contact() {
             </form>
           )}
 
-          {/* PARTNERSHIP */}
+          {/* REFERRAL / PARTNERSHIP */}
           {activeTab === "partner" && (
             <form
               id="panel-partner"
@@ -233,8 +279,6 @@ export default function Contact() {
                     rows={7}
                   />
                 </div>
-
-           
               </div>
 
               <button className="ct-submit" type="submit">
