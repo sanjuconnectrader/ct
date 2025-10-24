@@ -11,7 +11,7 @@ import "./Aboutheader.css";
 export default function Aboutheader({
   company = "About",
   tagline = "Modern solutions for unified World management",
-  image = "https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1", // USA office building (different from Contactheader)
+  image = "USA.jpeg", // USA office building (different from Contactheader)
 }) {
   return (
     <header

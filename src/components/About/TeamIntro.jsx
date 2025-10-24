@@ -8,7 +8,7 @@ import "./TeamIntro.css";
  * - Left: Title, role, and THREE paragraphs; the copy auto-fits to the image height.
  */
 export default function TeamIntro({
-  name = "Curtis Hacket",
+  name = "Curtis Hackett",
   role = "CEO & Founder",
   image = "./curtis.jpeg",
   word = "connectrader",
