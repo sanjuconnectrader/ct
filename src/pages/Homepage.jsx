@@ -1,6 +1,7 @@
 import InsightsSection from '../components/Blogs/InsightsSection'
 import Footer from '../components/Footer/Footer'
 import CaseStudies from '../components/Home/CaseStudies'
+import ConnectraderHero from '../components/Home/ConnectraderHero'
 import Hero from '../components/Home/Hero'
 
 
@@ -23,6 +24,7 @@ const Homepage = () => {
         </div>
     
         <ValuesAlt/>
+        <ConnectraderHero/>
 
    
         <CaseStudies/>
