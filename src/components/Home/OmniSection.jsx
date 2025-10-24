@@ -29,7 +29,7 @@ const IconBrowser = () => (
 );
 
 /** Default content */
-const DEFAULT_TITLE = "Mobile Apps, Backends, CMS & Web Apps — Unified Framework";
+const DEFAULT_TITLE = "Mobile Apps, CMS & Web Apps — Unified Framework";
 
 const DEFAULT_FEATURES = [
   {

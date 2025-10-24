@@ -35,7 +35,7 @@ const Homepage = () => {
         <WhatYouWillAchieve/>
 
         <InsightsSection/>
-        <HeroHeadline/>
+
 
         <Footer/>
 
