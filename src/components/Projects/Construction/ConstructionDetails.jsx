@@ -109,7 +109,7 @@ export default function ConstructionDetails({ open, onClose }) {
 
           <section className="cdrawer__more">
             <h3 className="cdrawer__moreTitle">
-              Would you like to know more about the project?
+              Would you like to know more about the project
             </h3>
             <p className="cdrawer__moreText">
               To find out more about our work or any of our other builds, get

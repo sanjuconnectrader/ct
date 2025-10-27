@@ -1,43 +1,48 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Works.css";
-import ConstructionDetails from "../Projects/Construction/ConstructionDetails";
+import ConstructionDetails from "../Projects/Construction/ConstructionDetails.jsx";
 
 const ITEMS = [
   {
     id: "c1",
-    img: "/moyer-project.png",
+    img: "/moyer-project.png", // put this in public/ for Vite, or import it
     tag: "Photography & Videography",
     title: "Moyer Production — Studio Portfolio Website",
-    href: "/works/Moyer-production",
+    to: "/works/Moyer-production",      // <-- use `to` for internal routes
     isLinkTitle: false,
-    alt: "Moyer Production studio website preview"
+    alt: "Moyer Production studio website preview",
+    external: false
   },
   {
     id: "c2",
-    img: "./prime.png",
+    img: "/prime.png",
     tag: "Landscaping Services",
     title: "Primed Landscaping — Local Services Website",
-    href: "#",
+    to: "#",                              // replace with a real internal route later
     isLinkTitle: false,
-    alt: "Primed Landscaping services website preview"
+    alt: "Primed Landscaping services website preview",
+    external: false
   },
   {
     id: "c3",
-    img: "./green2.png",
+    img: "/green2.png",
     tag: "Cleaning Services",
     title: "GreenWorks Carpet Cleaning — Service Website Revamp",
-    href: "#",
+    to: "#",
     isLinkTitle: false,
-    alt: "GreenWorks Carpet Cleaning website preview"
+    alt: "GreenWorks Carpet Cleaning website preview",
+    external: false
   },
   {
     id: "c4",
-    img: "./construction.png",
+    img: "/construction.png",
     tag: "Construction",
     title: "mngllc construction company - Tacoma",
-    href: "#",
+    to: null,                             // handled by side drawer button
     isLinkTitle: false,
-    alt: "MNG LLC construction website preview"
+    alt: "MNG LLC construction website preview",
+    external: false
   },
 ];
 
@@ -55,7 +60,7 @@ export default function Works() {
           <div className="works-grid" role="list">
             {ITEMS.map((it) => (
               <article key={it.id} className="works-card" role="listitem">
-                {/* Only the Construction card opens the side popup */}
+                {/* Construction card opens the side drawer */}
                 {it.id === "c4" ? (
                   <button
                     type="button"
@@ -67,18 +72,30 @@ export default function Works() {
                       <img src={it.img} alt={it.alt || ""} loading="lazy" />
                     </div>
                   </button>
-                ) : (
-                  <a href={it.href} className="works-thumbLink" aria-label={it.title}>
+                ) : it.external ? (
+                  <a
+                    href={it.to}
+                    className="works-thumbLink"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={it.title}
+                  >
                     <div className="works-thumb">
                       <img src={it.img} alt={it.alt || ""} loading="lazy" />
                     </div>
                   </a>
+                ) : (
+                  <Link to={it.to || "#"} className="works-thumbLink" aria-label={it.title}>
+                    <div className="works-thumb">
+                      <img src={it.img} alt={it.alt || ""} loading="lazy" />
+                    </div>
+                  </Link>
                 )}
 
                 <div className="works-meta">
                   <div className="works-tag">{it.tag}</div>
-                  {it.isLinkTitle ? (
-                    <a className="works-titleLink" href={it.href}>{it.title}</a>
+                  {it.isLinkTitle && it.to ? (
+                    <Link className="works-titleLink" to={it.to}>{it.title}</Link>
                   ) : (
                     <h3 className="works-itemTitle">{it.title}</h3>
                   )}
