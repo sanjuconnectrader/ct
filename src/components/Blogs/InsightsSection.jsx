@@ -35,7 +35,7 @@ export default function InsightsSection() {
   return (
     <section className="ins" aria-labelledby="ins-title">
       <div className="ins__wrap">
-        <h2 id="ins-title" className="ins__title">Latest Blogs</h2>
+        <h2 id="ins-title" className="ins__title">Latest Blog</h2>
 
         <div className="ins__grid">
           {POSTS.map((p) => (
