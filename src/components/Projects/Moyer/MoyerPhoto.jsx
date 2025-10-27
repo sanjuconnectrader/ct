@@ -1,7 +1,7 @@
 import React from "react";
 import "./MoyerPhoto.css";
 import moyerone from '../../../assets/Moyerone.png'
-import moyertwo from '../../../assets/Moyerone.png'
+import moyertwo from '../../../assets/Moyertwo.png'
 
 /**
  * MoyerPhoto
