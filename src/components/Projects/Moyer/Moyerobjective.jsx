@@ -1,5 +1,5 @@
 import React from "react";
-import "./MoyerObjective.css";
+import "./Moyerobjective.css";
 
 /**
  * Moyerobjective
