@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
 const ALWAYS_SOLID = ["/contact", "/about", "/works", "/works/Moyer-production"];
-const DARK_BACKGROUND_PAGES = ["/service"]; // keep only real paths
+const DARK_BACKGROUND_PAGES = ["/service"];
 const SCROLL_OFFSET = 10;
 
 export default function Navbar() {
@@ -12,7 +12,9 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [scrolled, setScrolled] = useState(ALWAYS_SOLID.includes(pathname));
-  const [isDarkBackground, setIsDarkBackground] = useState(DARK_BACKGROUND_PAGES.includes(pathname));
+  const [isDarkBackground, setIsDarkBackground] = useState(
+    DARK_BACKGROUND_PAGES.includes(pathname)
+  );
   const [isHomeFirstSections, setIsHomeFirstSections] = useState(false);
 
   const mobileMenuRef = useRef(null);
@@ -58,7 +60,9 @@ export default function Navbar() {
       const t3 = setTimeout(check, 1000);
       return () => {
         window.removeEventListener("scroll", check);
-        clearTimeout(t1); clearTimeout(t2); clearTimeout(t3);
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
       };
     } else setIsHomeFirstSections(false);
   }, [pathname]);
@@ -83,14 +87,16 @@ export default function Navbar() {
         mobileMenuRef.current &&
         !mobileMenuRef.current.contains(e.target) &&
         !e.target.classList.contains("mobile-menu-button")
-      ) setMobileMenuOpen(false);
+      )
+        setMobileMenuOpen(false);
 
       if (
         megaRef.current &&
         !megaRef.current.contains(e.target) &&
         servicesRef.current &&
         !servicesRef.current.contains(e.target)
-      ) setMegaOpen(false);
+      )
+        setMegaOpen(false);
     };
     document.addEventListener("mousedown", handle);
     return () => document.removeEventListener("mousedown", handle);
@@ -107,12 +113,18 @@ export default function Navbar() {
     if (hoverTimer.current) clearTimeout(hoverTimer.current);
     if (blurTimer.current) clearTimeout(blurTimer.current);
   };
-  const openMega = () => { clearTimers(); setMegaOpen(true); };
+  const openMega = () => {
+    clearTimers();
+    setMegaOpen(true);
+  };
   const closeMegaDelayed = () => {
     clearTimers();
     hoverTimer.current = setTimeout(() => setMegaOpen(false), 140);
   };
-  const onFocusIn = () => { clearTimers(); setMegaOpen(true); };
+  const onFocusIn = () => {
+    clearTimers();
+    setMegaOpen(true);
+  };
   const onFocusOut = () => {
     clearTimers();
     blurTimer.current = setTimeout(() => {
@@ -130,7 +142,9 @@ export default function Navbar() {
     megaOpen ? "dropdown-open" : "",
     isDarkBackground ? "dark-background" : "",
     isHomeFirstSections ? "home-first-sections" : "",
-  ].filter(Boolean).join(" ");
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <nav className={navbarClasses} role="navigation" aria-label="Main">
@@ -138,14 +152,22 @@ export default function Navbar() {
         {/* Logo */}
         <div className="navbar-logo">
           <Link to="/" aria-label="Go to homepage">
-            <img src="./logo_black.png" alt="Company Logo" className="logo-image" width="180" height="45" />
+            <img
+              src="./logo_black.png"
+              alt="Company Logo"
+              className="logo-image"
+              width="180"
+              height="45"
+            />
           </Link>
         </div>
 
         {/* Desktop menu */}
         <ul className="navbar-menu desktop" role="menubar" aria-label="Primary">
           <li role="none" className="nav-item">
-            <Link to="/" className="nav-link" role="menuitem">Home</Link>
+            <Link to="/" className="nav-link" role="menuitem">
+              Home
+            </Link>
           </li>
 
           {/* Services (mega trigger) */}
@@ -168,8 +190,14 @@ export default function Navbar() {
             >
               Service
               <svg className="chev" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.6" fill="none"
-                  strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="M1 1l5 5 5-5"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </Link>
 
@@ -187,37 +215,96 @@ export default function Navbar() {
                 <div className="mega-hero">
                   <p className="mega-eyebrow">Services</p>
                   <h2 className="mega-title">
-                    Crafting Bold <br />Ideas to<br />Strengthen Your<br />Brand
+                    Crafting Bold <br />
+                    Ideas to
+                    <br />
+                    Strengthen Your
+                    <br />
+                    Brand
                   </h2>
                   <Link to="/service" className="mega-cta" onClick={() => setMegaOpen(false)}>
                     View Our Works <span aria-hidden>→</span>
                   </Link>
                 </div>
 
-                {/* Right: TWO COLUMNS (Design + Development) */}
+                {/* Right: TWO COLUMNS */}
                 <nav className="mega-cols two" aria-label="Service lists">
                   {/* Design */}
                   <section className="mega-col" aria-labelledby="design-head">
-                    <Link id="design-head" to="/service/design" className="mega-col-head" onClick={() => setMegaOpen(false)}>
+                    <Link
+                      id="design-head"
+                      to="/service/design"
+                      className="mega-col-head"
+                      onClick={() => setMegaOpen(false)}
+                    >
                       Design <span aria-hidden>→</span>
                     </Link>
-                    <Link to="/service/ui-ux" className="mega-a" onClick={() => setMegaOpen(false)}>UI/UX Design</Link>
-                    <Link to="/service/website-design" className="mega-a" onClick={() => setMegaOpen(false)}>Website Design</Link>
-                    <Link to="/service/mobile-experience" className="mega-a" onClick={() => setMegaOpen(false)}>Mobile App Design</Link>
-                    <Link to="/service/commerce-experience" className="mega-a" onClick={() => setMegaOpen(false)}>Wire Framing & Prototyping</Link>
+                    <Link to="/service/ui-ux" className="mega-a" onClick={() => setMegaOpen(false)}>
+                      UI/UX Design
+                    </Link>
+                    <Link
+                      to="/service/website-design"
+                      className="mega-a"
+                      onClick={() => setMegaOpen(false)}
+                    >
+                      Website Design
+                    </Link>
+                    <Link
+                      to="/service/mobile-experience"
+                      className="mega-a"
+                      onClick={() => setMegaOpen(false)}
+                    >
+                      Mobile App Design
+                    </Link>
+                    <Link
+                      to="/service/commerce-experience"
+                      className="mega-a"
+                      onClick={() => setMegaOpen(false)}
+                    >
+                      Wire Framing &amp; Prototyping
+                    </Link>
                   </section>
 
                   {/* Development */}
                   <section className="mega-col" aria-labelledby="dm-head">
-                    <Link id="dm-head" to="/service/digital-marketing" className="mega-col-head" onClick={() => setMegaOpen(false)}>
+                    <Link
+                      id="dm-head"
+                      to="/service/digital-marketing"
+                      className="mega-col-head"
+                      onClick={() => setMegaOpen(false)}
+                    >
                       Development <span aria-hidden>→</span>
                     </Link>
-                    <Link to="/service/seo" className="mega-a" onClick={() => setMegaOpen(false)}>Web Development</Link>
-                    <Link to="/service/social" className="mega-a" onClick={() => setMegaOpen(false)}>Mobile App Development</Link>
-                    <Link to="/service/performance" className="mega-a" onClick={() => setMegaOpen(false)}>Ecommerce Development</Link>
-                    <Link to="/service/content" className="mega-a" onClick={() => setMegaOpen(false)}>CMS Development</Link>
-                    <Link to="/service/automation" className="mega-a" onClick={() => setMegaOpen(false)}>SEO</Link>
-                    <Link to="/service/analytics" className="mega-a" onClick={() => setMegaOpen(false)}>Analytics</Link>
+                    <Link to="/service/seo" className="mega-a" onClick={() => setMegaOpen(false)}>
+                      Web Development
+                    </Link>
+                    <Link to="/service/social" className="mega-a" onClick={() => setMegaOpen(false)}>
+                      Mobile App Development
+                    </Link>
+                    <Link
+                      to="/service/performance"
+                      className="mega-a"
+                      onClick={() => setMegaOpen(false)}
+                    >
+                      Ecommerce Development
+                    </Link>
+                    <Link to="/service/content" className="mega-a" onClick={() => setMegaOpen(false)}>
+                      CMS Development
+                    </Link>
+                    <Link
+                      to="/service/automation"
+                      className="mega-a"
+                      onClick={() => setMegaOpen(false)}
+                    >
+                      SEO
+                    </Link>
+                    <Link
+                      to="/service/analytics"
+                      className="mega-a"
+                      onClick={() => setMegaOpen(false)}
+                    >
+                      Analytics
+                    </Link>
                   </section>
                 </nav>
               </div>
@@ -225,13 +312,19 @@ export default function Navbar() {
           </li>
 
           <li role="none" className="nav-item">
-            <Link to="/works" className="nav-link" role="menuitem">Works</Link>
+            <Link to="/works" className="nav-link" role="menuitem">
+              Works
+            </Link>
           </li>
           <li role="none" className="nav-item">
-            <Link to="/about" className="nav-link" role="menuitem">About</Link>
+            <Link to="/about" className="nav-link" role="menuitem">
+              About
+            </Link>
           </li>
           <li role="none" className="nav-item">
-            <Link to="/contact" className="nav-link" role="menuitem">Contact</Link>
+            <Link to="/contact" className="nav-link" role="menuitem">
+              Contact
+            </Link>
           </li>
         </ul>
 
@@ -248,53 +341,130 @@ export default function Navbar() {
         </button>
 
         {/* Mobile drawer */}
-        <ul
+        <aside
           className={`navbar-menu mobile ${mobileMenuOpen ? "active" : ""}`}
           ref={mobileMenuRef}
-          role="menubar"
+          role="dialog"
           aria-label="Mobile navigation"
+          aria-modal="true"
         >
-          <li><Link to="/" className="nav-link" onClick={closeMobileMenu}>Home</Link></li>
+          {/* Drawer header: logo + search + close */}
+          <div className="mobile-head">
+            <Link to="/" className="mobile-logo" onClick={closeMobileMenu} aria-label="Home">
+              <img src="./logo_black.png" alt="Company Logo" />
+            </Link>
 
-          <li className="mobile-accordion">
-            <button className="accordion-btn" aria-expanded={megaOpen}
-              onClick={() => setMegaOpen((v) => !v)}>
-              Service
-              <svg width="12" height="8" viewBox="0 0 12 8" aria-hidden="true">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.6" fill="none"
-                  strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
+            <div className="mobile-actions">
+              <button className="icon-btn" aria-label="Search">
+                {/* simple magnifier icon */}
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <path d="M20 20l-3.5-3.5" stroke="currentColor" strokeWidth="2" />
+                </svg>
+              </button>
+              <button
+                className="icon-btn close-btn"
+                onClick={closeMobileMenu}
+                aria-label="Close menu"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" />
+                </svg>
+              </button>
+            </div>
+          </div>
 
-            <div className={`accordion-panel ${megaOpen ? "open" : ""}`}>
-              <Link to="/service" className="mobile-all" onClick={closeMobileMenu}>
-                Go to overview →
-              </Link>
+          {/* List */}
+          <nav className="mobile-list" role="menubar">
+            <Link to="/" className="mobile-item" onClick={closeMobileMenu} role="menuitem">
+              Home
+            </Link>
 
-              <div className="accordion-group">
-                <p className="group-head">Design</p>
-                <Link to="/service/ui-ux" onClick={closeMobileMenu}>UI/UX Design</Link>
-                <Link to="/service/website-design" onClick={closeMobileMenu}>Website Design</Link>
-                <Link to="/service/mobile-experience" onClick={closeMobileMenu}>Mobile Design</Link>
-                <Link to="/service/commerce-experience" onClick={closeMobileMenu}>Wire Framing</Link>
-              </div>
+            {/* Services accordion row */}
+            <div className="mobile-item is-accordion">
+              <button
+                className="accordion-row"
+                aria-expanded={megaOpen}
+                onClick={() => setMegaOpen((v) => !v)}
+              >
+                <span>Service</span>
+                <svg
+                  className={`carat ${megaOpen ? "open" : ""}`}
+                  width="18"
+                  height="12"
+                  viewBox="0 0 12 8"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M1 1l5 5 5-5"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
 
-              <div className="accordion-group">
-                <p className="group-head">Development</p>
-                <Link to="/service/seo" onClick={closeMobileMenu}>Web Development</Link>
-                <Link to="/service/social" onClick={closeMobileMenu}>Mobile App Development</Link>
-                <Link to="/service/performance" onClick={closeMobileMenu}>CRM Development</Link>
-                <Link to="/service/content" onClick={closeMobileMenu}>Ecommerce Website</Link>
-                <Link to="/service/automation" onClick={closeMobileMenu}>SEO</Link>
-                <Link to="/service/analytics" onClick={closeMobileMenu}>Analytics</Link>
+              <div className={`accordion-body ${megaOpen ? "open" : ""}`}>
+                <Link to="/service" className="mobile-all" onClick={closeMobileMenu}>
+                  Go to overview →
+                </Link>
+
+                <div className="accordion-group">
+                  <p className="group-head">Design</p>
+                  <Link to="/service/ui-ux" onClick={closeMobileMenu}>
+                    UI/UX Design
+                  </Link>
+                  <Link to="/service/website-design" onClick={closeMobileMenu}>
+                    Website Design
+                  </Link>
+                  <Link to="/service/mobile-experience" onClick={closeMobileMenu}>
+                    Mobile Design
+                  </Link>
+                  <Link to="/service/commerce-experience" onClick={closeMobileMenu}>
+                    Wire Framing
+                  </Link>
+                </div>
+
+                <div className="accordion-group">
+                  <p className="group-head">Development</p>
+                  <Link to="/service/seo" onClick={closeMobileMenu}>
+                    Web Development
+                  </Link>
+                  <Link to="/service/social" onClick={closeMobileMenu}>
+                    Mobile App Development
+                  </Link>
+                  <Link to="/service/performance" onClick={closeMobileMenu}>
+                    CRM Development
+                  </Link>
+                  <Link to="/service/content" onClick={closeMobileMenu}>
+                    Ecommerce Website
+                  </Link>
+                  <Link to="/service/automation" onClick={closeMobileMenu}>
+                    SEO
+                  </Link>
+                  <Link to="/service/analytics" onClick={closeMobileMenu}>
+                    Analytics
+                  </Link>
+                </div>
               </div>
             </div>
-          </li>
 
-          <li><Link to="/works" className="nav-link" onClick={closeMobileMenu}>Works</Link></li>
-          <li><Link to="/about" className="nav-link" onClick={closeMobileMenu}>About</Link></li>
-          <li><Link to="/contact" className="nav-link" onClick={closeMobileMenu}>Contact</Link></li>
-        </ul>
+            <Link to="/works" className="mobile-item" onClick={closeMobileMenu} role="menuitem">
+              Works
+            </Link>
+            <Link to="/about" className="mobile-item" onClick={closeMobileMenu} role="menuitem">
+              About
+            </Link>
+            <Link to="/contact" className="mobile-item" onClick={closeMobileMenu} role="menuitem">
+              Contact
+            </Link>
+          </nav>
+
+          {/* Fixed bottom CTA like screenshot */}
+       
+        </aside>
       </div>
     </nav>
   );
