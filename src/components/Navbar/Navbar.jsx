@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
-const ALWAYS_SOLID = ["/contact", "/about"];
-const DARK_BACKGROUND_PAGES = ["/works", "/service"];
+const ALWAYS_SOLID = ["/contact", "/about", "/works", "/works/Moyer-production"];
+const DARK_BACKGROUND_PAGES = ["/service"]; // keep only real paths
 const SCROLL_OFFSET = 10;
 
 export default function Navbar() {
@@ -12,9 +12,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [scrolled, setScrolled] = useState(ALWAYS_SOLID.includes(pathname));
-  const [isDarkBackground, setIsDarkBackground] = useState(
-    DARK_BACKGROUND_PAGES.includes(pathname)
-  );
+  const [isDarkBackground, setIsDarkBackground] = useState(DARK_BACKGROUND_PAGES.includes(pathname));
   const [isHomeFirstSections, setIsHomeFirstSections] = useState(false);
 
   const mobileMenuRef = useRef(null);
@@ -22,6 +20,12 @@ export default function Navbar() {
   const servicesRef = useRef(null);
   const hoverTimer = useRef(null);
   const blurTimer = useRef(null);
+
+  // close menus on route change (prevents sticky states)
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setMegaOpen(false);
+  }, [pathname]);
 
   /* route → dark page flag */
   useEffect(() => {
@@ -99,10 +103,15 @@ export default function Navbar() {
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
-  /* hover/focus helpers */
-  const clearTimers = () => { if (hoverTimer.current) clearTimeout(hoverTimer.current); if (blurTimer.current) clearTimeout(blurTimer.current); };
+  const clearTimers = () => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    if (blurTimer.current) clearTimeout(blurTimer.current);
+  };
   const openMega = () => { clearTimers(); setMegaOpen(true); };
-  const closeMegaDelayed = () => { clearTimers(); hoverTimer.current = setTimeout(() => setMegaOpen(false), 140); };
+  const closeMegaDelayed = () => {
+    clearTimers();
+    hoverTimer.current = setTimeout(() => setMegaOpen(false), 140);
+  };
   const onFocusIn = () => { clearTimers(); setMegaOpen(true); };
   const onFocusOut = () => {
     clearTimers();
@@ -174,36 +183,33 @@ export default function Navbar() {
               onMouseLeave={closeMegaDelayed}
             >
               <div className="mega-inner">
-                {/* Left headline block (exactly like screenshot 2) */}
+                {/* Left headline block */}
                 <div className="mega-hero">
                   <p className="mega-eyebrow">Services</p>
                   <h2 className="mega-title">
-                   Crafting Bold <br />Ideas to<br />Strengthen Your<br />Brand
+                    Crafting Bold <br />Ideas to<br />Strengthen Your<br />Brand
                   </h2>
                   <Link to="/service" className="mega-cta" onClick={() => setMegaOpen(false)}>
                     View Our Works <span aria-hidden>→</span>
                   </Link>
                 </div>
 
-                {/* Right: ONLY TWO COLUMNS (Design + Digital Marketing) */}
+                {/* Right: TWO COLUMNS (Design + Development) */}
                 <nav className="mega-cols two" aria-label="Service lists">
                   {/* Design */}
                   <section className="mega-col" aria-labelledby="design-head">
-                    <Link id="design-head" to="/service/design" className="mega-col-head"
-                      onClick={() => setMegaOpen(false)}>
+                    <Link id="design-head" to="/service/design" className="mega-col-head" onClick={() => setMegaOpen(false)}>
                       Design <span aria-hidden>→</span>
                     </Link>
                     <Link to="/service/ui-ux" className="mega-a" onClick={() => setMegaOpen(false)}>UI/UX Design</Link>
                     <Link to="/service/website-design" className="mega-a" onClick={() => setMegaOpen(false)}>Website Design</Link>
                     <Link to="/service/mobile-experience" className="mega-a" onClick={() => setMegaOpen(false)}>Mobile App Design</Link>
                     <Link to="/service/commerce-experience" className="mega-a" onClick={() => setMegaOpen(false)}>Wire Framing & Prototyping</Link>
-
                   </section>
 
-                  {/* Digital Marketing */}
+                  {/* Development */}
                   <section className="mega-col" aria-labelledby="dm-head">
-                    <Link id="dm-head" to="/service/digital-marketing" className="mega-col-head"
-                      onClick={() => setMegaOpen(false)}>
+                    <Link id="dm-head" to="/service/digital-marketing" className="mega-col-head" onClick={() => setMegaOpen(false)}>
                       Development <span aria-hidden>→</span>
                     </Link>
                     <Link to="/service/seo" className="mega-a" onClick={() => setMegaOpen(false)}>Web Development</Link>
@@ -241,7 +247,7 @@ export default function Navbar() {
           <span className="menu-line bottom-line"></span>
         </button>
 
-        {/* Mobile drawer (unchanged) */}
+        {/* Mobile drawer */}
         <ul
           className={`navbar-menu mobile ${mobileMenuOpen ? "active" : ""}`}
           ref={mobileMenuRef}
@@ -270,8 +276,7 @@ export default function Navbar() {
                 <Link to="/service/ui-ux" onClick={closeMobileMenu}>UI/UX Design</Link>
                 <Link to="/service/website-design" onClick={closeMobileMenu}>Website Design</Link>
                 <Link to="/service/mobile-experience" onClick={closeMobileMenu}>Mobile Design</Link>
-                <Link to="/service/commerce-experience" onClick={closeMobileMenu}>Wire Framing </Link>
-           
+                <Link to="/service/commerce-experience" onClick={closeMobileMenu}>Wire Framing</Link>
               </div>
 
               <div className="accordion-group">

@@ -1,0 +1,72 @@
+/* Montserrat (Light 300 default) */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap");
+
+:root{
+  --hero-text:#ffffff;
+  --hero-muted:rgba(255,255,255,.78);
+  --hero-overlay:linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,.25));
+  --hero-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.moyerhero{
+  position: relative;
+  width: 100%;
+  min-height: 72vh;                 /* tall like the reference */
+  display: grid;
+  align-items: end;                 /* text sits low-left */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: var(--hero-shadow);
+  isolation: isolate;               /* overlay layering safety */
+  overflow: hidden;
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 300;                 /* Montserrat Light */
+}
+
+.moyerhero__overlay{
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+  z-index: 0;
+}
+
+.moyerhero__inner{
+  position: relative;
+  z-index: 1;
+  color: var(--hero-text);
+  padding: 6rem clamp(20px, 6vw, 72px);
+  max-width: 1200px;
+}
+
+/* Big headline similar to the example */
+.moyerhero__title{
+  margin: 0 0 1.75rem 0;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-weight: 300;                 /* keep it light */
+  font-size: clamp(2.4rem, 6.8vw, 5.2rem);
+}
+
+/* Industry block */
+.moyerhero__meta{
+  display: grid;
+  gap: .35rem;
+  margin-top: 2rem;
+}
+
+.moyerhero__metaLabel{
+  color: var(--hero-muted);
+  font-size: clamp(.85rem, 1.4vw, 1rem);
+}
+
+.moyerhero__metaValue{
+  color: #fff;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 400;
+}
+
+/* Responsive spacing for very small heights */
+@media (max-height: 680px){
+  .moyerhero__inner{ padding-top: 3.5rem; padding-bottom: 3.5rem; }
+}

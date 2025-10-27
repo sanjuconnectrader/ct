@@ -12,18 +12,13 @@ export default function CaseStudies({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("animate-in");
         });
       },
       { threshold: 0.2, rootMargin: "-50px 0px" }
     );
 
-    cardsRef.current.forEach((card) => {
-      if (card) observer.observe(card);
-    });
-
+    cardsRef.current.forEach((card) => card && observer.observe(card));
     return () => observer.disconnect();
   }, []);
 
@@ -39,15 +34,26 @@ export default function CaseStudies({
       <div className="cs-wrap">
         <div className="cs-header">
           <h2 id="case-studies-title" className="cs-title">Our Work</h2>
+
+          {/* optional arrows if you enable horizontal overflow on .cs-grid */}
+          {/* <div className="cs-arrows">
+            <button className="cs-arrow" onClick={() => page(-1)} aria-label="Previous">←</button>
+            <button className="cs-arrow" onClick={() => page(1)} aria-label="Next">→</button>
+          </div> */}
         </div>
 
-        <div className="cs-grid" ref={scrollerRef} role="list" aria-label="Case studies list">
+        <div
+          className="cs-grid"
+          ref={scrollerRef}
+          role="list"
+          aria-label="Case studies list"
+        >
           {items.map((it, i) => (
-            <article 
-              role="listitem" 
-              className="cs-card" 
+            <article
+              role="listitem"
+              className="cs-card"
               key={i}
-              ref={el => cardsRef.current[i] = el}
+              ref={(el) => (cardsRef.current[i] = el)}
             >
               <a href={it.href} className="cs-link">
                 <div className="cs-media">
@@ -58,6 +64,7 @@ export default function CaseStudies({
                     decoding="async"
                   />
                 </div>
+
                 <p className="cs-category">{it.category}</p>
                 <h3 className="cs-card-title">{it.title}</h3>
                 <p className="cs-summary">{it.summary}</p>
@@ -74,53 +81,33 @@ export default function CaseStudies({
   );
 }
 
+/* === Your three real projects === */
 const DEFAULT_ITEMS = [
   {
-    href: "/case-studies/ecommerce-platform",
-    imageSrc: "/caseone.webp",
-    imageAlt: "Modern e-commerce dashboard with analytics and product management",
-    category: "E-commerce / Platform",
-    title: "Scalable E-commerce Solution",
-    summary: "Built a high-performance online store with real-time inventory, secure payments, and mobile-first responsive design for optimal customer experience.",
+    href: "/moyer-production",
+    imageSrc: "/moyer-project.png", // keep your asset; swap to /moyer-project.png if you prefer
+    imageAlt: "Moyer Production studio portfolio website mockup",
+    category: "Photography & Videography",
+    title: "Moyer Production — Studio Portfolio Website",
+    summary:
+      "A fast, media-rich studio site showcasing reels, galleries, and services with mobile-first performance and smooth browsing.",
   },
   {
-    href: "/case-studies/saas-dashboard",
-    imageSrc: "/case2.webp",
-    imageAlt: "Business analytics dashboard with data visualization charts",
-    category: "SaaS / Analytics",
-    title: "Business Intelligence Platform",
-    summary: "Developed an intuitive dashboard with custom data visualization, real-time reporting, and automated insights for data-driven decision making.",
+    href: "/primed-landscaping",
+    imageSrc: "./prime.png", // keep your asset; swap to /prime.png if you prefer
+    imageAlt: "Primed Landscaping local services website preview",
+    category: "Landscaping Services",
+    title: "Primed Landscaping — Local Services Website",
+    summary:
+      "Service-driven pages with clear packages, quotes, and trust signals to convert neighborhood visitors into qualified leads.",
   },
   {
-    href: "/case-studies/mobile-app",
-    imageSrc: "/case3.webp",
-    imageAlt: "Mobile application interface showing user profile and features",
-    category: "Mobile / Cross-platform",
-    title: "Fitness Tracking Application",
-    summary: "Created a cross-platform mobile app with health tracking, social features, and personalized workout plans using React Native and cloud services.",
-  },
-  {
-    href: "/case-studies/web-app",
-    imageSrc: "/case4.webp",
-    imageAlt: "Project management tool with team collaboration features",
-    category: "Web Application / Productivity",
-    title: "Team Collaboration Platform",
-    summary: "Engineered a real-time collaboration tool with task management, file sharing, and video conferencing integration for remote teams.",
-  },
-  {
-    href: "/case-studies/design-system",
-    imageSrc: "/case5.webp",
-    imageAlt: "Design system components and documentation",
-    category: "Design System / UI/UX",
-    title: "Enterprise Design System",
-    summary: "Built a comprehensive design system with reusable components, accessibility guidelines, and developer documentation for consistent user experiences.",
-  },
-  {
-    href: "/case-studies/api-platform",
-    imageSrc: "/case6.webp",
-    imageAlt: "API documentation and developer portal interface",
-    category: "API / Backend",
-    title: "RESTful API Platform",
-    summary: "Developed a scalable API platform with comprehensive documentation, rate limiting, and authentication for third-party developer integration.",
+    href: "/greenworks-carpet-cleaning",
+    imageSrc: "./green2.png", // keep your asset; swap to /green2.png if you prefer
+    imageAlt: "GreenWorks Carpet Cleaning website redesign preview",
+    category: "Cleaning Services",
+    title: "GreenWorks Carpet Cleaning — Service Website Revamp",
+    summary:
+      "Modernized layouts, credibility badges, and streamlined booking flow to increase calls and form submissions.",
   },
 ];
