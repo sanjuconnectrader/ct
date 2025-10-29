@@ -1,0 +1,252 @@
+/* Philosophy.css */
+/* Montserrat Light (300) + regular weights */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap");
+
+/* Base (no :root; all values in-place) */
+* { box-sizing: border-box; }
+
+.philo {
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #0b0b0b;                      /* ink */
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;                  /* bg */
+}
+
+.philo::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(11, 11, 11, 0.1) 50%, transparent 100%);
+}
+
+.philo__container {
+  width: 100%;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Wider inner container for bigger boxes */
+.philo__inner {
+  width: min(1380px, 94vw);            /* increased from ~1300 to make cards wider */
+  margin-inline: auto;
+}
+
+/* Header */
+.philo__header {
+  text-align: left;
+  margin-bottom: 80px;
+  max-width: 100%;
+}
+
+.philo__title {
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  font-size: clamp(42px, 4.5vw, 64px);
+  line-height: 1.1;
+  margin: 0 0 28px;
+  background: linear-gradient(135deg, #0b0b0b 0%, #2d3748 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.philo__lead {
+  font-weight: 300;
+  color: #5b6870;                      /* muted */
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.6;
+  max-width: 780px;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* CTA beneath the lead */
+.philo__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;                    /* sits right below the paragraph */
+  padding: 12px 22px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+                /* teal-like accent */
+  border: 1.5px solid #000000;         /* darker border */
+  
+  box-shadow: 0 8px 24px rgba(7, 102, 120, 0.2);
+}
+
+
+.philo__cta:active { transform: translateY(0); }
+
+.philo__cta-icon { display: block; }
+
+/* Grid (cards are naturally wider due to the larger container) */
+.philo__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;                            /* previously var(--gap-lg) */
+  align-items: stretch;
+}
+
+/* Card */
+.philoCard {
+  position: relative;
+  min-height: 560px;                    /* slight adjust; height stays elegant */
+  overflow: hidden;
+  isolation: isolate;
+  background: #0f3c45;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.philoCard:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.philoCard__bg {
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+  filter: saturate(0.85) contrast(0.95) brightness(0.9);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+.philoCard:hover .philoCard__bg {
+  transform: scale(1.08);
+  filter: saturate(1.1) contrast(1.05) brightness(1.1);
+}
+
+.philoCard__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(7, 102, 120, 0.80) 0%,
+    rgba(7, 102, 120, 0.72) 50%,
+    rgba(7, 102, 120, 0.60) 100%
+  );
+  z-index: 2;
+  transition: background 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.philoCard:hover .philoCard__overlay {
+  background: linear-gradient(
+    0deg,
+    rgba(7, 102, 120, 0.85) 0%,
+    rgba(7, 102, 120, 0.80) 50%,
+    rgba(7, 102, 120, 0.70) 100%
+  );
+}
+
+.philoCard__content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 40px 32px;
+  color: #ffffff;
+}
+
+.philoCard__title {
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1.2;
+  margin: 0 0 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.philoCard:hover .philoCard__title {
+  transform: translateY(-4px);
+}
+
+.philoCard__desc {
+  font-weight: 300;
+  line-height: 1.7;
+  font-size: clamp(15px, 1.4vw, 17px);
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  opacity: 0.9;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(8px);
+}
+
+.philoCard:hover .philoCard__desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1300px) {
+  .philo__inner { width: 92vw; }
+  .philo__grid { gap: 24px; }
+  .philoCard { min-height: 440px; }
+}
+
+@media (max-width: 1100px) {
+  .philo { padding: 80px 0; }
+  .philo__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .philo__header { margin-bottom: 60px; }
+  .philoCard { min-height: 400px; }
+}
+
+@media (max-width: 768px) {
+  .philo { padding: 60px 0; }
+  .philo__header { margin-bottom: 50px; text-align: left; }
+  .philo__title { font-size: clamp(36px, 8vw, 48px); margin-bottom: 24px; }
+  .philo__lead { font-size: clamp(16px, 4vw, 18px); line-height: 1.6; }
+  .philo__grid { gap: 24px; }
+  .philoCard { min-height: 360px; }
+  .philoCard__content { padding: 32px 24px; }
+}
+
+@media (max-width: 640px) {
+  .philo__grid { grid-template-columns: 1fr; gap: 24px; }
+  .philoCard { min-height: 320px; }
+  .philo__header { margin-bottom: 40px; }
+}
+
+@media (max-width: 480px) {
+  .philo { padding: 50px 0; }
+  .philo__inner { width: 90vw; }
+  .philoCard { min-height: 300px; }
+  .philoCard__content { padding: 28px 20px; }
+  .philoCard__title { margin-bottom: 20px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .philoCard,
+  .philoCard__bg,
+  .philoCard__overlay,
+  .philoCard__title,
+  .philoCard__desc,
+  .philo__cta {
+    transition: none;
+  }
+  .philoCard:hover { transform: none; }
+}
+
+/* High contrast */
+@media (prefers-contrast: high) {
+  .philoCard__overlay { background: rgba(0, 0, 0, 0.8); }
+  .philoCard__desc { color: #ffffff; opacity: 1; }
+}

@@ -1,0 +1,57 @@
+/* Montserrat Light (300) */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap");
+
+:root{
+  --uihero-h: 350px;                 /* change to match your artboard height */
+  --side-pad: clamp(24px, 8vw, 180px);
+}
+
+/* Full-bleed background */
+.Ecommerceheader{
+  position: relative;
+  min-height: var(--uihero-h);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-image: var(--bg-src);
+  background-size: cover;
+  background-position: center;
+  overflow: clip;
+}
+
+/* Soft left-to-right dim for text legibility + subtle vignette */
+.Ecommerceheader__shade{
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 120% at 85% 10%, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.10) 60%, rgba(0,0,0,0.18) 100%),
+    linear-gradient(90deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.10) 35%, rgba(0,0,0,0.00) 60%);
+  pointer-events: none;
+}
+
+/* Content wrapper (keeps text left-aligned like the reference) */
+.Ecommerceheader__container{
+  position: relative;
+  padding-left: var(--side-pad);
+  padding-right: var(--side-pad);
+  width: 100%;
+}
+
+/* Title */
+.Ecommerceheader__title{
+  margin: 0;
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 300;                 /* Montserrat Light */
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  font-size: clamp(40px, 6.8vw, 92px); /* scales like the screenshot */
+  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  /* slight vertical alignment tweak to mimic the image */
+  transform: translateY(4px);
+}
+
+/* Optional: taller on large screens to match widescreen banners */
+@media (min-width: 1200px){
+  :root{ --uihero-h: 420px; }
+}

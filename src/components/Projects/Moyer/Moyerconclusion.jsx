@@ -3,9 +3,10 @@ import "./Moyerconclusion.css";
 
 /**
  * Moyerconclusion
- * - Large title + readable paragraph
- * - Montserrat Light
- * - Matches the clean, wide-margin layout from the reference
+ * - High-end UI with elegant typography and spacing
+ * - Fully responsive design
+ * - Montserrat typography hierarchy
+ * - Clean, modern layout with strategic color usage
  */
 export default function Moyerconclusion({
   title = "Conclusion",
@@ -17,12 +18,26 @@ export default function Moyerconclusion({
   presence, improves lead quality, and makes showcasing recent work effortless.`,
 }) {
   return (
-    <section className="mcon" aria-labelledby="mcon-title">
-      <div className="mcon__wrap">
-        <h2 id="mcon-title" className="mcon__title">{title}</h2>
-        <p className="mcon__lead">
-          {body}
-        </p>
+    <section className="moyer-conclusion" aria-labelledby="mcon-title">
+      <div className="moyer-conclusion__container">
+        <div className="moyer-conclusion__content">
+          <div className="moyer-conclusion__header">
+            <div className="moyer-conclusion__accent-line"></div>
+            <h2 id="mcon-title" className="moyer-conclusion__title">
+              {title}
+            </h2>
+          </div>
+          <div className="moyer-conclusion__body">
+            <p className="moyer-conclusion__text">
+              {body}
+            </p>
+          </div>
+          <div className="moyer-conclusion__decoration">
+            <div className="moyer-conclusion__dot"></div>
+            <div className="moyer-conclusion__dot"></div>
+            <div className="moyer-conclusion__dot"></div>
+          </div>
+        </div>
       </div>
     </section>
   );

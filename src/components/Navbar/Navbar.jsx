@@ -237,7 +237,7 @@ export default function Navbar() {
                       className="mega-col-head"
                       onClick={() => setMegaOpen(false)}
                     >
-                      Design <span aria-hidden>→</span>
+                      Design <span aria-hidden></span>
                     </Link>
                     <Link to="/service/ui-ux" className="mega-a" onClick={() => setMegaOpen(false)}>
                       UI/UX Design
@@ -249,15 +249,9 @@ export default function Navbar() {
                     >
                       Website Design
                     </Link>
+                
                     <Link
-                      to="/service/mobile-experience"
-                      className="mega-a"
-                      onClick={() => setMegaOpen(false)}
-                    >
-                      Mobile App Design
-                    </Link>
-                    <Link
-                      to="/service/commerce-experience"
+                      to="/service/WireFraming"
                       className="mega-a"
                       onClick={() => setMegaOpen(false)}
                     >
@@ -273,26 +267,26 @@ export default function Navbar() {
                       className="mega-col-head"
                       onClick={() => setMegaOpen(false)}
                     >
-                      Development <span aria-hidden>→</span>
+                      Development <span aria-hidden></span>
                     </Link>
-                    <Link to="/service/seo" className="mega-a" onClick={() => setMegaOpen(false)}>
+                    <Link to="/service/Webdevelopment" className="mega-a" onClick={() => setMegaOpen(false)}>
                       Web Development
                     </Link>
-                    <Link to="/service/social" className="mega-a" onClick={() => setMegaOpen(false)}>
+                    <Link to="/service/MobileAppDevelopment" className="mega-a" onClick={() => setMegaOpen(false)}>
                       Mobile App Development
                     </Link>
                     <Link
-                      to="/service/performance"
+                      to="/service/Ecommerce-Development"
                       className="mega-a"
                       onClick={() => setMegaOpen(false)}
                     >
                       Ecommerce Development
                     </Link>
-                    <Link to="/service/content" className="mega-a" onClick={() => setMegaOpen(false)}>
+                    <Link to="/service/CMS-Development" className="mega-a" onClick={() => setMegaOpen(false)}>
                       CMS Development
                     </Link>
                     <Link
-                      to="/service/automation"
+                      to="/service/SEO"
                       className="mega-a"
                       onClick={() => setMegaOpen(false)}
                     >
@@ -419,9 +413,7 @@ export default function Navbar() {
                   <Link to="/service/website-design" onClick={closeMobileMenu}>
                     Website Design
                   </Link>
-                  <Link to="/service/mobile-experience" onClick={closeMobileMenu}>
-                    Mobile Design
-                  </Link>
+             
                   <Link to="/service/commerce-experience" onClick={closeMobileMenu}>
                     Wire Framing
                   </Link>
@@ -429,19 +421,19 @@ export default function Navbar() {
 
                 <div className="accordion-group">
                   <p className="group-head">Development</p>
-                  <Link to="/service/seo" onClick={closeMobileMenu}>
+                  <Link to="/service/Web-development" onClick={closeMobileMenu}>
                     Web Development
                   </Link>
-                  <Link to="/service/social" onClick={closeMobileMenu}>
+                  <Link to="/service/Mobile-App-Development" onClick={closeMobileMenu}>
                     Mobile App Development
                   </Link>
-                  <Link to="/service/performance" onClick={closeMobileMenu}>
+                  <Link to="/service/CRM-Development" onClick={closeMobileMenu}>
                     CRM Development
                   </Link>
-                  <Link to="/service/content" onClick={closeMobileMenu}>
+                  <Link to="/service/Ecommerce-development" onClick={closeMobileMenu}>
                     Ecommerce Website
                   </Link>
-                  <Link to="/service/automation" onClick={closeMobileMenu}>
+                  <Link to="/service/SEO" onClick={closeMobileMenu}>
                     SEO
                   </Link>
                   <Link to="/service/analytics" onClick={closeMobileMenu}>

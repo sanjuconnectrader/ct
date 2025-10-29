@@ -3,10 +3,12 @@ import Footer from '../components/Footer/Footer'
 import CaseStudies from '../components/Home/CaseStudies'
 import ConnectraderHero from '../components/Home/ConnectraderHero'
 import Hero from '../components/Home/Hero'
+import HeroImpact from '../components/Home/HeroImpact'
 
 
-import Introscroller from '../components/Home/Introscroller'
+
 import OmniSection from '../components/Home/OmniSection'
+import Philosophy from '../components/Home/Philosophy'
 import StoryBanner from '../components/Home/StoryBanner'
 import ValuesAlt from '../components/Home/ValuesAlt'
 import WhatYouWillAchieve from '../components/Home/WhatYouWillAchieve'
@@ -25,6 +27,8 @@ const Homepage = () => {
     
         <ValuesAlt/>
         <ConnectraderHero/>
+        <Philosophy/>
+        <HeroImpact/>
 
    
         <CaseStudies/>

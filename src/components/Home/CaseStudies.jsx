@@ -84,7 +84,7 @@ export default function CaseStudies({
 /* === Your three real projects === */
 const DEFAULT_ITEMS = [
   {
-    href: "/moyer-production",
+    href: "/works/Moyer-production",  
     imageSrc: "/moyer-project.png", // keep your asset; swap to /moyer-project.png if you prefer
     imageAlt: "Moyer Production studio portfolio website mockup",
     category: "Photography & Videography",

@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap");
+
+* { box-sizing: border-box; }
+
+.EcommerceFaq{
+  background: #ffffff;
+  color: #0f172a;
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  width: 100%;
+}
+
+.EcommerceFaq__wrap{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 40px 80px;
+}
+
+.EcommerceFaq__title{
+  margin: 0 0 48px;
+  font-size: 72px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 1;
+  text-align: center;
+}
+
+.EcommerceFaq__list{
+  margin-top: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Single item */
+.EcommerceFaq__item{
+  border-bottom: 1px solid rgba(2,6,23,0.22);
+}
+
+/* clickable row: question + plus at right */
+.EcommerceFaq__toggle{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  gap: 20px;
+  align-items: center;
+  padding: 28px 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.2s ease;
+}
+
+.EcommerceFaq__toggle:hover { opacity: 0.8; }
+
+.EcommerceFaq__question{
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.4;
+}
+
+/* plus icon using before/after */
+.EcommerceFaq__plus{
+  position: relative;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.EcommerceFaq__plus::before,
+.EcommerceFaq__plus::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 2px;
+  background: #0f172a;
+  transition: transform 0.2s ease;
+}
+
+.EcommerceFaq__plus::after{
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* answer panel (animated height) */
+.EcommerceFaq__answer{
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+  will-change: max-height;
+}
+
+.EcommerceFaq__answer p{
+  margin: 0 0 28px;
+  padding-right: 44px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #475569;
+}
+
+/* open state */
+.EcommerceFaq__item.is-open .EcommerceFaq__answer{
+  max-height: 300px;
+}
+
+.EcommerceFaq__item.is-open .EcommerceFaq__plus::after{
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.EcommerceFaq__item.is-open .EcommerceFaq__plus{
+  transform: rotate(45deg);
+}
+
+/* Show more button */
+.EcommerceFaq__more{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.EcommerceFaq__moreBtn{
+  padding: 16px 32px;
+  background: #ffffff;
+  color: #0f172a;
+  border: 1.5px solid #2563eb;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.EcommerceFaq__moreBtn:hover{
+  color: #ffffff;
+}
+
+/* Responsive spacing */
+@media (max-width: 1024px) {
+  .EcommerceFaq__wrap{ padding: 100px 32px 72px; }
+  .EcommerceFaq__title{ font-size: 64px; margin-bottom: 40px; }
+  .EcommerceFaq__question{ font-size: 20px; }
+}
+
+@media (max-width: 768px) {
+  .EcommerceFaq__wrap{ padding: 80px 24px 64px; }
+  .EcommerceFaq__title{ font-size: 56px; margin-bottom: 32px; }
+  .EcommerceFaq__list{ margin-top: 16px; }
+  .EcommerceFaq__toggle{ padding: 24px 0; gap: 16px; }
+  .EcommerceFaq__question{ font-size: 18px; line-height: 1.3; }
+  .EcommerceFaq__answer p{ font-size: 16px; padding-right: 0; margin-bottom: 24px; }
+  .EcommerceFaq__more{ margin-top: 32px; }
+  .EcommerceFaq__moreBtn{ width: 100%; max-width: 280px; padding: 14px 24px; }
+}
+
+@media (max-width: 600px) {
+  .EcommerceFaq__wrap{ padding: 64px 20px 56px; }
+  .EcommerceFaq__title{ font-size: 48px; }
+  .EcommerceFaq__toggle{ padding: 20px 0; }
+  .EcommerceFaq__question{ font-size: 17px; }
+  .EcommerceFaq__answer p{ font-size: 15px; line-height: 1.6; }
+}
+
+@media (max-width: 480px) {
+  .EcommerceFaq__wrap{ padding: 48px 16px 48px; }
+  .EcommerceFaq__title{ font-size: 42px; margin-bottom: 24px; }
+  .EcommerceFaq__toggle{ grid-template-columns: 1fr 20px; gap: 12px; padding: 18px 0; }
+  .EcommerceFaq__plus{ width: 20px; height: 20px; }
+  .EcommerceFaq__plus::before,
+  .EcommerceFaq__plus::after{ width: 14px; }
+  .EcommerceFaq__question{ font-size: 16px; }
+  .EcommerceFaq__moreBtn{ font-size: 15px; }
+}

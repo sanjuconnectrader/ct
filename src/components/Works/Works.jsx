@@ -19,7 +19,7 @@ const ITEMS = [
     img: "/prime.png",
     tag: "Landscaping Services",
     title: "Primed Landscaping — Local Services Website",
-    to: "#",                              // replace with a real internal route later
+    to: "/works/Primedlandscaping",                              // replace with a real internal route later
     isLinkTitle: false,
     alt: "Primed Landscaping services website preview",
     external: false
